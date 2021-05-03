@@ -2,7 +2,7 @@
 const Sequelize = require('sequelize');
 require('dotenv').config();
 
-// 
+// Changed this to make sure the dotenv package works 
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
