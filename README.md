@@ -59,19 +59,107 @@ Create the code needed in `server.js` to sync the Sequelize models to the MySQL 
 
 * The walkthrough video must show all of the technical acceptance criteria being met.
 
+### Technical Acceptance Criteria: 40%
+
+* Satisfies all of the preceding acceptance criteria plus the following:
+
+  * Connects to a MySQL database using the [MySQL2](https://www.npmjs.com/package/mysql) and [Sequelize](https://www.npmjs.com/package/sequelize) packages.
+
+  * Stores sensitive data, like a user’s MySQL username, password, and database name, using environment variables through the [dotenv](https://www.npmjs.com/package/dotenv) package.
+
+  * Syncs Sequelize models to a MySQL database on the server start.
+
+  * Includes column definitions for all four models outlined in the homework instructions.
+
+  * Includes model associations outlined in the homework instructions.
+
 * The walkthrough video must demonstrate how to create the schema from the MySQL shell.
+
+mysql -u root -p
+
+DROP DATABASE IF EXISTS ecommerce_db;
+CREATE DATABASE ecommerce_db;
 
 * The walkthrough video must demonstrate how to seed the database from the command line.
 
+npm run seed
+
 * The walkthrough video must demonstrate how to start the application’s server.
+
+node server.js
 
 * The walkthrough video must demonstrate GET routes for all categories, all products, and all tags being tested in Insomnia Core.
 
+localhost:3001/api/categories
+
+localhost:3001/api/products
+
+localhost:3001/api/tags
+
 * The walkthrough video must demonstrate GET routes for a single category, a single product, and a single tag being tested in Insomnia Core.
+
+localhost:3001/api/categories/1
+
+localhost:3001/api/products/1
+
+localhost:3001/api/tags/1
 
 * The walkthrough video must demonstrate POST, PUT, and DELETE routes for categories, products, and tags being tested in Insomnia Core.
 
-### Technical Acceptance Criteria: 40%
+POST
+localhost:3001/api/categories
+{
+  "category_name": "Underwear"
+}
+
+PUT 
+localhost:3001/api/categories/6
+{
+  "category_name": "Undergarments"
+}
+
+DELETE 
+localhost:3001/api/categories/6
+
+_____________________
+
+POST
+localhost:3001/api/products
+{
+ "product_name": "Nike Air Max",
+ "price": 119.99,
+ "stock": 30,
+ "category_id": 1,
+ "tagIds": [5]
+}
+
+PUT
+localhost:3001/api/products/6
+{
+ "product_name": "Nike Air Max 270",
+ "price": 149.99,
+ "stock": 50,
+ "category_id": 1,
+ "tagIds": [5]
+}
+
+DELETE
+localhost:3001/api/products/6
+
+POST
+localhost:3001/api/tags
+{
+  "tag_name": "Folk Music"
+}
+
+PUT
+localhost:3001/api/tags/9
+{
+  "tag_name": "Bluegrass Music"
+}
+
+DELETE
+localhost:3001/api/tags/9
 
 * Satisfies all of the preceding acceptance criteria plus the following:
 
